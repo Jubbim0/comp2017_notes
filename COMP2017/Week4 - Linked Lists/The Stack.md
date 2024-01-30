@@ -1,0 +1,12 @@
+## The Stack
+- In C, everything in the local scope of a function and its parameters are stored on the stack
+- When a function is called the code:
+	- Pushes arguments onto the stack
+	- Push return address (where to return the result to) onto the stack
+	- Jump to function code
+- Inside the function the code:
+	- Increment the stack pointer by the size of the local variables to allow for space
+	- Executer the code
+	- Pop local variables and arguments off the stack
+	- Push the return result onto the stack
+	- Jump to return address

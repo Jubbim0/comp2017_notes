@@ -1,0 +1,33 @@
+- Disk storage peripherals provide persistent storage with a low level interface
+	- fixed-size blocks
+	- numeric addresses
+- Operating systems arrange this into an abstraction as files:
+	- files can vary in length
+	- files contain: the information, names, and meta-data (owner, last modified, etc)
+	- files are arranged into a dir tree
+- Read or write a file via System Calls (APIs)
+- Devices are often represented as files 
+	- software reads/writes file to access the device
+	- eg. to have a printer device print a document, write the file to the 'printer file'
+- If a file can be a physical device, then it is not fixed in size or behavior 
+- A file is managed via a stream of data:
+	- may support a file position indicator \[0, fileLength]
+	- can be encoded in diff ways (binary, ASCII, multibyte)
+	- can be open/closed/flushed
+	- can be unbuffered, fully buffered or line buffered
+		- unbuffered - input/output is passed ASAP
+		- fully buffered - input/output is accumulated into a full block and then passed 
+		- line buffered - the block size is based on the new line char
+		- Usage depends on the needed actions for a task - device driver writers should consider `setvbuff` for optimal block size
+- For each file opened, there needs to be a file descriptor
+	- the descriptor describes the state of the file (opened, closed, position, etc)
+- For many file operations, use `include stdio.h`
+- When your program begins, special files are opened for you:
+	- stdin (standard input)
+	- stdout (standard output)
+	- stderr (standard error)
+- When a stream supports  file position, the position is zero
+	- Every print/scan operation adjust the position in the  stream 
+	- query position with `ftell`, change position with fseek
+- 
+- 
